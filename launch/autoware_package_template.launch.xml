@@ -1,0 +1,11 @@
+<launch>
+  <arg name="autoware_package_template_param_path" default="$(find-pkg-share autoware_package_template)/config/autoware_package_template.param.yaml"/>
+
+  <node pkg="autoware_package_template" exec="autoware_package_template_node" name="autoware_package_template" output="screen">
+  	<param from="$(var autoware_package_template_param_path)"/>
+
+  	<remap from="~/input/command" to="/control/command/control_cmd"/>
+    <remap from="~/output/command" to="/whill/controller/joy"/>
+  </node>
+
+</launch>
